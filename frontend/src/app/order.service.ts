@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CartService } from './cart.service';
+import { ORDER_URL } from './shared/constants/url';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,13 @@ import { CartService } from './cart.service';
 export class OrderService {
   cartOrder:any = [];
   countOrder:number = 0;
-  url = 'https://pizzeira-api.onrender.com/orderpizza/allitems';
+  URL = ORDER_URL;
   constructor(private httpClient:HttpClient, private cartService:CartService) {
 
   }
-  
+
   getOrderData(){
-    return this.httpClient.get(this.url);
+    return this.httpClient.get(this.URL);
   }
   getCountOrder(){
     return this.cartOrder.length;
