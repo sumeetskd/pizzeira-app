@@ -1,5 +1,6 @@
 import express, {Express, Request, Response} from "express";
 import dotenv from 'dotenv';
+import path from 'path';
 import { getXataClient,Ingredients,Orderpizza  } from "./xata";
 
 dotenv.config(); // make sure that env variables are included
@@ -135,6 +136,12 @@ async (req: Request<{id:string},{},{}>, res: Response<MyResponse<Orderpizza>>)=>
     }
 
 })
+
+app.use(express.static('public'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname,'public', 'index.html'))
+})
+
 
 app.listen(port, ()=>{
     console.log(`Server running at port ${port}`);
