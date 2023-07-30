@@ -137,9 +137,9 @@ async (req: Request<{id:string},{},{}>, res: Response<MyResponse<Orderpizza>>)=>
 
 })
 
-app.use(express.static('public'));
+app.use(express.static('../../frontend/dist/pizzeria'));
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname,'public', 'index.html'))
+    res.sendFile(path.join(__dirname,'../../frontend/dist/pizzeria', 'index.html'))
 })
 
 
