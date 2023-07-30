@@ -1,0 +1,29 @@
+Service:
+1. Only contains business logic for the code.
+How to create:
+app->course->course.service.ts
+
+service.ts:-
+export class CourseService{
+	getCourse():string[]{
+		return ['a','b','abc'];
+	}
+
+}
+
+goto component.ts:-
+1. import ur service
+2. add the dependency injection: to let the compiler know that we are using a serice
+and we don't need to make tight coupling.
+	add the metadata: provider:[CourseService]
+3. to use the service:-
+	Inside the componentClass:-
+	1.create an variable to store the data that is to be returned by the service method.
+	2. public course;	->any datatype: as we don't know the type of data ie to be returned by the srvice
+	3. call the service using a constructor:-
+		constructor(courseService:CourseService){
+			this.course = courseService.getCourse();
+		}
+
+	
+

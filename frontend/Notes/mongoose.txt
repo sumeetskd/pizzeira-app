@@ -1,0 +1,20 @@
+1. Mongoose is ODM framework.
+2. ODM means Object Document Modelling.
+3. When we use mongoose we don't need to use MongoAPI(function) for any operation.
+
+4. Installation:
+	npm install mongoose
+
+
+mongoose.connect(dbUrl)	// connected to db
+
+const dbConnection = mongoose.connection;	
+
+
+5. Installation : npm install mongoose`
+6. www.mongoose.com
+7. While working with mongoose we need to create and use the schema.
+8. The we bind the schema with the model.
+9. We create the Model using schema.
+10. When we add the document in collection using mongoose it create an additional filed in the
+collection with name as "__v". It is used for versioning.

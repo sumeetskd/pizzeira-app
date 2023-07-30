@@ -1,0 +1,23 @@
+#nav-class{
+    border:0px;
+}
+#nav-container{
+    background-color: black;
+}
+#logo{
+    padding:2px;
+}
+#nav-cart{
+    float: right;
+    margin-top: 12px;
+}
+#footer-id{
+    background-color: rgba(56, 51, 51, 0.158);
+}
+#footer-text{
+    padding: 10px;
+    margin:0px;
+    color: rgba(211, 102, 39, 0.836);
+    /* font-style: italic; */
+    /* background-color: black; */
+}

@@ -1,0 +1,136 @@
+1. Sass is the stylesheet language.
+2. In the SASS, we can create the variables for the different values like
+color, margin, padding, etc
+3.To work with SASS, we have to create the file with extension as
+.scss, when we compile this .scss file, it will automatically generate .css file
+4. The name of .css file will be same as the .scss file
+5. We have to add this .css file as a stylesheet file in our .html file using <link>
+6. In SASS, the variable name starts with $
+
+$mycolor: deeppink;
+$mybgcolor:aquamarine;
+
+
+SASS:
+It's an open source preprocessor
+1. its the pre-processing language of css, we can create stylesheet efficiently
+and is easy to maintain.
+2. superset of css, contains all features of css
+3. it is written in ruby
+4. can be used to perform logical operation and has some built in functions
+
+->setup command:
+	npm install sass
+
+var less=require('sass');
+sass.render(sassContents, function(f,css){
+	console.log(css);
+});
+
+-> we can use variables, nesting, mixins, inheritance,etc.
+-> we can watch individual files or entire directories.
+	cmd:(imp)
+		sass--watch main.scss
+
+
+->compiling using node cli:(imp)
+	node-sass input.scss output.css
+
+
+String interpolation:
+eg: $element:"img";
+	{$property}{height:200px;}
+
+Parent Selector:
+&:can be used to apply property to parent css selector
+.parent{
+	.wrapper &{
+		margin: 1px;
+	}
+}
+	css:
+		.wrapper .parent{ margin:1px;}
+
+Nesting Rules:
+div{
+	font{
+		size:
+		style:
+	}
+}
+	will be same as div{font-size:, font-style:}
+
+**Directives:
+Elements starting with '@'
+	@import,@extend,@mixin,@function
+
+1. @import:
+	we can use @import to import another .css or .scss file, and reuse it in our file.
+eg:
+	@import "style.scss"	//embedes directly
+
+2. @extend:
+	we can use @extend to reuse an already existing style. (inheritance)
+.style1{}
+.style2{
+@extend.style1;
+propB:value;
+}
+
+3. @mixin:
+	Allow us to create a 'mixin' which is repeatable sections of code.
+	it can be some block of code.(can be act as a function)
+eg:	
+	@mixin special-style{
+	font:{
+		size:
+		family:
+	}
+}
+	2. Parameter @mixin:
+	@mixin rounded-circle($length){
+		@import special-style;
+		border-radius: $length;
+
+	}
+
+4. @function:
+	to write some logic and reuse the logic in other part of sass file.
+eg:
+	$size: 100px;
+	@function calcHeight($size){
+		@return ($size+4px);
+	}
+	.style{
+		height: calcHeight(4);
+	}
+
+Control Directive:
+
+	@if,@for,@each,@while
+1.@if:
+
+div{
+	@if $page==1{
+
+	}else if $page>5{}
+	else{}
+}
+
+2. @for
+
+@for $i from 1 through 20{
+	.col#{$i){width:200px}	//{$i} is string interpolation
+}
+
+3. @each $day in Mon,Tue,Wed{
+	#{$day} { color: red;}
+}
+
+4.@while:
+$i:1;
+
+@while $i<=5{
+	h#{$i}{font-size:10px+$i;}
+	$i+:1;
+}

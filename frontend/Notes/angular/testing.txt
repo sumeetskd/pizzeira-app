@@ -1,0 +1,19 @@
+wrap test cases in describe function:
+describe("Testing this application"),()=>{
+	describe("Testing the function with 2 positive no",()=>{
+	//Here we write the actual test cases using it() function
+	it("Testing for the addition of 2 positive numbers:"){
+		
+
+	}
+
+})
+}
+
+// our test app can have multiple describe function
+// each describe function can have many describe function 
+//for specifice test cases
+	//our test cases are writen using it() function
+// toBe() has some matcher function
+// karma and jasmine are the testing framework.
+// Above example is using karma framework.

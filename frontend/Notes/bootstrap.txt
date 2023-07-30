@@ -1,0 +1,93 @@
+Bootstrap 3.0+:-
+1. Bootstrap is the open source css framework.
+2. Bootstrap allows to create the responsive web design.
+3. REsponsive web design means creating the web pages whtich automatically adjust themselves to look bettern
+upon all the devices irrespective of the screen size and the screen resolution. eg. mobile, tab, laptop, large screen.
+4. Bootstrap is developed by mark otto and Jacob thornton in Aug 2011 at twitter
+5. Bootstrap is css library.
+
+How to download?
+-> There are 3 ways to use the bootstrap.
+1. using cdn: content delivery network.
+2. package manager
+3. by downloading: www.getbootstrap.com
+
+1. www.getbootstrap.com: click on download---> compiled css and js----> extract the file
+2. when we extract the file it contains 2 folders as css and js
+3. create the project folder, inside this folder create the folder as css and 
+copy bootstrap.css file into it.
+
+
+Container Class:
+1. Container class resized the size of content according to size of view window.
+2. It is useful in the devices of 
+
+
+Typographs:
+We have heading classes from h1 to h6
+
+Display Heading:
+1. When we want to create big headings other than h1 to h6
+we make use of display headings.
+2. Bootstrap provides classes like "display-1" to "display-6"
+
+
+List: 
+1. Unstyled List
+2. Inline List
+
+Table:
+1. Table is the collection of rows and columns 
+2. bootstrap provides below classes to work with the table:
+	1. Table
+	2. Table-Bordered
+	3. Table-stripped
+	
+Colors to the table:
+	table-primary
+	table-secondary
+	table-success
+	table-alert
+	table-danger
+	table-warning
+	table-info
+	table-light
+	table-dark
+
+Work:
+1. Horizontal Form:
+	Form class: <form class="form-horizontal">
+	  	    <label class="control-label col-sm-4">
+		    <input type="text" class="col-sm-8" class="form-control">	
+
+
+2. Vertical Form: This is default form layout
+	<div class="form-group">
+Apply:  <input type="text" class="form-control">
+
+3. Inline Form:
+add .form-inline to your form for left-aligned and inline-block control.
+<form class="form-inline">
+	<div class="form-group">
+		<lable for="ex1">Name</label>
+		<input type="text" class="form-control" id="t1">
+	</div>
+	<div class="form-group">
+		<lable for="ex1">Email</label>
+		<input type="email" class="form-control" id="t1">
+	</div>
+</form>
+
+
+Button:
+
+bootstrap provides different types of buttons with predefined style
+<button type="button" class="btn btn-primary"> : 
+		      class="btn btn-secondary"
+		      class="btn btn-success"
+		            "btn btn-danger"
+			    "btn btn-warning"
+			    "btn btn-light"
+			    "btn btn-dark"
+			    "btn btn-info"
+			     

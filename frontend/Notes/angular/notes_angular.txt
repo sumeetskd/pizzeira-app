@@ -1,0 +1,368 @@
+1. Angular is a component based programming.
+2. In angular we create separate component for different functionalities.
+3. When we create an angular project, by default one component is created as "App" component.
+4. Every component by default contains 4 files:
+    1. .ts file(logic file)
+    2. .html file(design file)
+    3. .css file(stylesheet file)
+    4. .spec.ts file (testing file)
+5. When we create a class and we want to make that class as a component class, 
+	we have to decorate that class with @component decorator.
+6. Decorator is like function which is used to decorate the class/method.
+7. Decorate name always starts with @ symbol.
+8. Every decorator contains some metadata.
+9. @component decorator has the following metadata:
+    1. selector: The component is identified with the selector. Selector is used to call
+    the component. 
+    We use selector as tag in html page to call the component.
+    
+    2. templateUrl: Here we specify the html file which we bind the component with.
+    It means that when we will invoke the component, the html file mentioned in the templateurl will be displayed.
+
+    3. styleurl: Here we specify the stylesheet file for the component.
+
+10. Component is the collection of logic and design script.
+11. Logic is implemented in .ts file and design script is implemented in the html file.
+12. We bind the logic(.ts) and design(.html) file in the templateUrl of @component decorator.
+13. Installation of Angular:
+    npm install -g @angular/cli 
+14. To create the angular project we use below command
+    ng new <project_name>
+15. To run the angular project use:
+    ng serve -o
+    Above command run the project and open it on localhost 4200
+
+Component:
+1. Component is collection of logic and design script.
+2. In the project, we create diffrent components for specific task.
+eg: login componet, home component, payment component.
+3. Single Page Application(SPA) is the collection of muliple component.
+4. In every angular project there is a default componet called "App" component.
+5. We can create our user defined componet as below:
+	ng generate component <component_name>
+6. Above command will create folder with componet's name and that folder will contain 4 files(.ts,.html,.css,.spec.ts)
+
+
+User defined comp.:
+IMP:
+1. When we run the angular project, it only display index.html page.
+2. This index.html by default invokes(calls) App component.
+3. It means angular by default loads only "App" component.
+4. Thats why even if we call the user defined component from index.html
+It will not call that component.
+5. If we want to call the user defined componet from index.html it menas if we want to load the user defined component at the boostrapping, we need 
+to modify app.module.ts file.
+6. In app.module.ts file there is property called as bootstrap,
+In this bootstrap array we need to add our userdefined component.
+Then only it will be loaded at starting of angular project and it will allow us to invoke the user defined component from Index.html page.
+
+Data Binding:
+
+1. We create the data in the class(.ts file) and display that data on the html page.
+The flow of data between componet and html is called as data binding.
+There are two types of data binding.
+1. One way data binding.
+2. Two way data binding.
+
+One way data binding:
+1. When the data flows from component to html or html to component it is called as one way data binding.
+2. Event binding is a type of one way data binding. -> (prop)
+3. In the event binding, the event(click, focus, blur) gets generated on the html 
+page and it calls the function in the class(.ts file)
+4. We can implement the one way data binding using:
+	1. Interpolation: {{}}
+	2. Property binding: [property_name]: In this case we declare the property in the 
+		.ts file(class) and we apply that property on the html page.
+		Syntax: [property_name] = "variable declared in class"
+
+Two way data binding: 
+1. When data flows from component(.ts) to html as well as from html to the component, it is called as two way data binding.
+2. To implement two way data binding, we make use of [(ngModel)]
+3. To use the [(ngModel)] in the Project we need to import the Forms Module in the app.module.ts file.
+4. After importing we hae to add the FormsModule in the imports array in the epp.module.ts file.
+5. We create the data member in the component and inside it's html we
+create any text field. We bind the text field with the data memeber created in the component.
+6. We bind the data members with the textfile using [(ngModel)].
+
+Directive:
+1. With the help of directives we can give instruction to modify the DOM at the runtime.
+2. Directives are used to display the content on html page based on some conditions.
+	eg: Display user name only if user is logged in, 
+		Display logout button, make payment button only if user is logged in.
+3. Directive decides how to place html content on the page.
+4. There are 3 types of directives:
+	1. Structural Directives
+	2. Component Directives
+	3. Attribute Directives
+
+Structural Directives:
+1. This directives are responsible for the structure of page.
+2. These directives can add, remove, modify html elements at runtime.
+3. Using these directives we can change the appearance of the webpage.
+4. Names of the structural directives always starts with *
+	eg. *ngFor, *ngIf, *ngSwitch,
+
+*ngIf:
+1. It is used to display the html content based on some condition.
+2. It works as simple if statement in programming.
+3. To implelent if..else, we need to create the block using <ng-template> with some id.
+4. Then we need to use this id in the else block.
+
+else part is written inside: ng-template
+eg: 
+	<h1 *ngIf="flag else myid">Some text</h1>
+	<ng-template #myid>	
+		//id is created with #id_name
+	</ng-template>
+
+*ngFor:
+1. It works as for loop in the programming language.
+2. It is used to print the html elements multiple times.
+
+Steps: To create an example
+1. Create the employee component.
+2. In this employee create the array of employee data.
+3. In the employee.comp.html page create the table and display this data using *ngFor.
+4. We need to use *ngFor at the row level because we need to dispaly the rows multiple times.
+
+*ngSwitch:
+1. It is used as switch case in the programming languages.
+2. We can *ngSwitch when we want to dispaly a perticular option among the multiple options.
+	cmd: ng generate component SwitchCase
+
+	<select [ngSwitch]
+
+
+Services:
+
+1. Service is a .ts file which contain the commmon data or logic which may be requested by different component in the project.
+2. As a developer we need to identify the data or logic which can be 
+	used by muliple components in the project.
+3. We create this common data in class(.ts file) and declare that file as service.
+4. To declare any class as service we need to decorate that class with @Injectable decorator.
+5. We create service using below command.
+	ng generator service <service_name>
+6. Above command will create 2 files in the project.
+7. After creation of service we need to make it's entry in the providers array(ngmodule). -> this feature is no longer supported by angular, handled by @Injectable decorator.
+8. Component which want to use the data or logic created in the service need to create the object of the service class as
+	dependency injection.
+9. Dependency Injection: When we create the object of any class at the constructor level without using new keyword, this technique is 
+called as dependency injection.
+10. Imp: 
+	To create the object of any class as dependency injection, we must make the entry of that class in the "providers" array inside
+	app.module.ts file 
+
+
+JS-callback: when we declare a function as a paramater inside another function.
+
+
+
+Observable:
+1. It is the source of the data.
+2. It emits the sequence of data or events continously.
+3. Angular uses the obervable as interface to handle the common asynchronous programming.
+4. Observable send the data continously, but observer can get it only if observer had subscribed to observable.
+5. One observable can be subscribed by the multiple observers.
+6. Observable is the part of RxJs library.
+7. In the latest version of angular RxJs is already integrated with Angular.
+
+Observer:
+1. When we create the observable, to keep the track of data or events emitted by observable, we need to create the observer.
+2. Observer continously listens to the observable.
+3. Observer can get the data in three forms: data, errors, completed.
+4. Observer has 3 callback function to recieve the data in above 3 format.
+	1. next(): This gives the data emitted by observable.
+	2. error(): This gives the error information, if any occured.
+	3. completed(): This indicates observable stopped.
+
+Subscription:
+1. Observable keep sending the data continously.
+2. A mechanism which captures and processes that data is called subscription. 
+3. We need to subscribe to the observable inorder to get and process the data.
+4. We use subscribe() function to subscribe to the observable.
+5. This subscribe() function takes 3 callback function as parameter:
+	next(), error(), completed()
+6. Out of above next() is mandatory parmeter and error() and complete() are optional.
+	eg: HttpClient in Angular is internally Observable.
+
+HttpModules:
+1. We use this to get the data using http methods.
+2. Steps:
+	1. Create the project.
+	2. In the app.module.ts file, import HttpClientModule from @angular/common/http.
+		Also make the entry in the in import metadeta: array.
+	3. After this we can use HttpClient in our project.
+	4. Using HttpClient we can get the data from local machine as well as from the web.
+	5. Create the .json file in the assets folder as "user.json"
+	6. Create some data in that file.
+	7. Create user service and import the HttpClient in that file.
+	8. Create the object of HttpClient in the constructor as dependency injection.
+	9. Create the url for the json file.
+	10. Using the object of HttpClient call the get() method and pass the url.
+	of the file.
+	11. This get() method will return the data which is present in that json file.
+	12. We have to call this get() method in the getUsersData() method. So, Create the getUsersData()  in the service class.
+	13. Create the user component.
+		eg:
+			url:string = "https://jsonplaceholder.typicode.com/users";
+  			constructor(private http:HttpClient) { }
+  			public getData(){
+    				return this.http.get(this.url);
+  			}
+
+
+	14. In the user component import the userservice and create the object of userservice as dependency injection.
+	15. In the constructor call the getUserData() method and subscribe it using subscribe() function.
+	16. HttpClient is internally observable so to get the data we need to subscribe it.
+	
+
+Router:
+
+1. With the help of routing, we create the SPA.
+2. With the help of routing, we can navigate from one component to another component.
+3. To implement the routing, we need to create the project with routing option as "yes"
+4. When we create the project with routing option it create the additional 
+	file in the project called routing file.
+5. In this routing file there is predefined array of type Routes.
+6. In this routes array, we write the path and it's component as json object.
+7. In the app.component.html page(or any html page) where we call the component.
+8. On this page we need to reverse the area where invoked call component will be displayed.
+9. We create this reverse area using <router-outlet>
+
+Steps:
+1. Create project with routing option.
+2. Create the required component in the project.
+3. Write the path and their components in Routes[] array inside routing file.
+4. In app.component.html file create the links using <a></a> with routerLink Property.
+
+
+Routing with parameter:
+1. We can pass the parameter with the path while implementing the routing.
+2. In other word we can say, we can pass the parameter to the 
+component using routes with parameter concept.
+3. We can access these sent parameter using ActivatedRoutes class.
+	we will use obj_ActivatedRoutes.params.subscribe((data)=>)
+4. ActivatedRoutes is internally like Observable, so to access the route parameters we need to subscribe it.
+5. In routing file we need to add the path with parameter and component as below.
+	{path:"product/:pid",component:ProductComponent}
+	Here we must remember this "pid" we will use in ProductComponent to access the parameter value.
+
+IMP: If we want to create object of any component calss as dependency injection in the constructor of other class, we heave to make it's entry in
+provider's array of ngModule
+
+
+Child Routing:(Nesting Routing)
+
+Steps:
+1. Basic steps are same as above
+2. In the rougting file at the time of path creation we have to declare 
+product component as child of ProductList using the children property.
+3. The child component uses the path of their parent component, so we dont provide the separe path for the ProductComponent,
+only we declare route parameter for the child component.
+4. In the productList.comp.html file we will create the link using <a> but we don't need to specify the router path. we only pass the router parameter.
+5. To display the child component's output on the parent component html page, we need to create the <router-outlet> on the productList.comp.html page also.
+
+
+Forms:
+1. There are 2 types of forms in Angular.
+	1. Model Driven Form(MDF)
+	2. Template Driven Form(TDF)
+
+Template Driven Form:
+
+1. In the TDF we write the validation logic in the html page.
+2. In the MDF we write the validation logic in the component class.
+3. To work on either forms in angular, we need to import the FormModule in the app.moduel.ts file,
+	and add it in the import array.
+4. We create the form on the html and asign id to the form using #,
+	then we assign ngForm to that id.
+5. While working with forms in angular we have to provide the id, name, custom name to every form control.
+
+Module Driven Form(MDF):
+1. To Work with MDF we need to import the ReactiveFormsModule in the app.module.ts and add in imports array.
+2. In this approach we create the validation logic in the component clas.
+3. In the component clas file we need to import {FormGroup, FormControl, Validators}
+4. In the componnet class we create the FormGroup object by passing the array of FormControl as input.
+5. We create the form in the html page of component.
+6. In the form we must give the same names to the form control which we have given while creting the FormContorl objects in the component.
+7. We use these name given to FormControl's object and assign them to the "formControlName" property while form controls the html form.
+8. We assign the FormGroup object's name to the [formGroup] property in <form> tag
+
+
+Module:
+1. Module is collection of components, services, pipes which are related to one another.
+2. MOdule is a mechanism to group the related component, services, pipes together.
+3. Module is a class(.ts file) in angular which is decorated with @ngModule.
+4. Every angular application contains atleast 1 module(atleast 1 class which is decorated with @NgModule decorator)
+5. Angular Project contains AppModule as default module.
+6. The AppModule is called as a root Module.
+
+Types of Module:
+	1. Eagerly Loaded Module:
+		1. These get loaded with the root module(when app get executed for the first time)
+		2. These are imported in AppModule.
+		3. We can use these for small applications.
+	2. Lazy Loaded Module:
+		1. We can import the module when we require them.
+		2. These gets downloaded when we require it.
+		3. We use this approach for big applications.
+
+
+Feature Module:
+	1. Feature module are user defined module.
+	2. These module helps to organize the code which is created for specific feature.
+		eg: Payment Module, Product Module, Admin Module
+	3. All user defined Modules are imported from CommonModule and not with BrowserModule.
+
+	4. User Defined Modules helps to separate the logic from each other.
+	5. Generally we make use of routing to load the required custom module.
+	6. We create the custome module as below:
+		ng generate module <module_name> --routing=true
+	7. Above command will create the module with routing file.
+	8. We have to create the project with routing option as true.
+	
+	9. To create the component, pipes, services in perticular module we use:
+		ng generate component <module_name>/<component_name>
+		or
+		cd path: ng g c <component>
+	10. Make entry of User Defined Module in the import[] in the app.module.ts file
+	11. Export the module level component(feture component) from module.ts file
+		eg: exports: [AdminComponent, AccountandComponent]
+
+Lazy Loading:
+1. Using this concep we can load the modules based on requirement.
+2.It is implemented using canLoad(interface)
+3. This interface provides canLoad() abstract method.
+4. We need to create the class which implements canLoad() method.
+5. In this method we write the logic to load/stop the interface.
+6. If this method returns true then module will be loaded else not loaded.
+7. This class is called as guard class.
+8. We create the guard class with canLoad() method as below
+	ng generate guard <guard_name>
+	Then select canLoad() using arrow key
+
+Steps:
+1. Create a project with routing options.
+2. Create Modules with routing=true
+3. Create the guard class:
+	ng generate guard ModuleLoader
+	-> select canLoad()using space and deselect canActivated using space
+
+4. Go to Module.Loader.ts file write some logic to return true 
+5. Go to App.Router add path and loadChildren
+	path:"employee",loadChildren:()=>EmployeeModule
+
+6. Call the guard name and callLoad() in the loadChildren();
+	path: "department", loadChildren():()=>DepartmentModule,canLoad:[ModuleLoader]
+									//canLoad: [GuardClassName]
+7. In the above array we have to specify the guard anme in the canLoad propery.
+	Depending upon the value returned the guard module will be loaded.
+8. Create the required components in the Module
+
+
+Pipe:
+	
+
+
+Create custome pipe:
+	ng generate pipe <pipe_name>

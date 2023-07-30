@@ -1,0 +1,14 @@
+
+#footer-id{
+    /* background-color: #FAF8D4; */
+    /* background-color: #220c10; */
+    background-color: #393d3fab;
+    margin-top:15px;
+}
+#footer-text{
+    padding: 10px;
+    margin:0px;
+    color: rgb(255, 196, 0);
+    /* font-style: italic; */
+    /* background-color: black; */
+}

@@ -1,0 +1,62 @@
+<div style="margin:30px 0px;">
+    <div class="container">
+        <div class="row">
+            <div id="pizza-block" class="col-lg-6" *ngFor="let p of pizza">
+                <div class="pizza">
+                    <div class="p1">
+                        <div style="flex-basis:33%">
+                            <!-- Title -->
+                            <h3 style="text-align: center;">{{p.name}}</h3>
+                        </div>
+                        <div [ngSwitch]="p.type" style="display: flex; justify-content: center; flex-basis: 33%;">
+
+                            <p id="red" *ngSwitchCase="type1">
+                                <!-- {{p.type}} -->
+                            </p>
+                            <p id="green" *ngSwitchCase="type2">
+                                <!-- {{p.type}} -->
+                            </p>
+                        </div>
+
+                        <div style="display: flex; justify-content: center; flex-basis: 33%;">
+                            <!-- Price -->
+                            {{p.price|currency:'INR'}}
+                        </div>
+                    </div>
+                    <div class="p2" style="padding:18px;">
+                        <!-- ingredients -->
+                        <div style="flex-basis:33%">
+                            <!-- disc -->
+                            <p>
+                                {{p.description}}
+                            </p>
+                        </div>
+                        <div style="flex-basis:33%">
+                            <!-- Ing -->
+                            <p>
+                                <span style="font-weight: bold;">Ingredient: </span>{{p.ingredients}}
+                            </p>
+                        </div>
+                        <div style="flex-basis:33%">
+                            <!-- Topping -->
+                            <p>
+                                <span style="font-weight: bold;">Topping: </span>{{p.topping}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p3">
+                        <div>
+                            <!-- img -->
+                            <img [src]="p.image" [alt]="p.name" width="150px">
+                        </div>
+                        <div style="flex-basis:33%">
+                            <input #data [value]="p.id" hidden>
+                            <input class="btn btn-warning" type="submit" (click)="addToCartClick(data)" [value]="checkPresence(data)?'Remove from Cart':'Add to Cart'" [ngClass]="checkPresence(data)?'btn-danger':'btn-warning' ">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

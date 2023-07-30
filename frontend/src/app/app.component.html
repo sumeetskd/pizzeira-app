@@ -1,0 +1,8 @@
+<app-navigation [count]="count"></app-navigation>
+
+
+<router-outlet (emitCartCount)="getCartCount($event)">
+
+</router-outlet>
+
+<app-footer></app-footer>

@@ -1,0 +1,12 @@
+[(ngModel)]="name" 	name:string="Sumeet"
+
+(handler)->event
+[]->property
+
+src:string="./doc/img.jpg";
+
+<img [src]="src" >
+<botton (click)="myFun()">
+myFun(){
+	this.src="./doc/img1.jpg";
+}

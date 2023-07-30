@@ -1,0 +1,61 @@
+show databases;
+
+create new db: use <dbname>
+
+collection: equivalent to table
+
+show collections;-> shows collections
+
+create New Collection: 
+db.myNewCollection.insertOne({x:1});	(auto-creation:implicit: when first data is inserted)
+db.createCollection(name_of_collection);	(collection:explicit)
+
+Drop a Collection:
+db.<collection_name>.drop() : return true:successfully dropped
+				return false: failed to remove
+eg: db.Student.drop() : returns true(dropped successfully)
+
+
+Insert Data:
+insertMany():
+eg: db.Employee.insertMany([{eid:101,ename:"Sumeet",esalary:29000},{eid:102,ename:"Amit",esalary:30000},{eid:103,ename:"Saurabh",esalary:50000}]);
+
+
+_id Field is unique ObjectId for collection data, to avoid duplicate key error
+
+
+Unordered Insertion: 
+db.Employee.insert([{eid:104,ename:"Rahul",esalary:34322},{eid: 105,ename: "Sambit", esalary: 32223}]);
+
+(Order is not maintained in above case)
+
+Finding the Doc.:
+Method to read documents from collection:
+db.collection.find(query,projection);
+eg: 
+	db.Employee.find(query,projection)
+
+	query:
+	projection:
+
+Types:
+1. FindAll:
+eg: 	db.Employee.find();
+2. Selection: 
+	db.Employee.find({esalary:{$gt:30000}})
+3. Projecton:
+	db.Employee.find({
+		{esalary:{$gt:30000}},
+		{eid:101}
+	}
+
+price:{$lt:200}
+price:{$gt:200}
+price:{$gte:2000}
+price:{$in:[100,200]}
+price:{$ne:3000}
+price:{$nin:[100,200,300]}
+
+Update:
+
+db.Employee.update({eid:101},{$set{ename:"Rakesh",esalary:40000}});
