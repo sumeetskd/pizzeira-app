@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CartService } from './cart.service';
 import { INGREDIENT_URL } from './shared/constants/url';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class IngredientService {
 
   }
 
-  getIngredientData(){
-    return this.httpClient.get(this.URL);
+  getIngredientData(): Observable<any>{
+    return this.httpClient.get<any>(this.URL);
   }
   setCartIngredient(item:any){
     this.cartIngredient = item;

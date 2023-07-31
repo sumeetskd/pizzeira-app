@@ -23,14 +23,6 @@ export class OrderComponent implements OnInit {
   }
 
   constructor(private orderServe: OrderService) {
-
-    this.orderServe.getOrderData().subscribe((data) => {
-      this.pizza = data;
-      let jsonData = { id: this.pizza.id, value: false };
-      this.initialItems.push(jsonData);
-    })
-
-
   }
   addToCartClick(item: any) {
     let check_presence = this.cartItems.findIndex((data: any) => data.id == item.value);
@@ -45,7 +37,6 @@ export class OrderComponent implements OnInit {
     }
     // this.onCartCountChange();
     this.emitCartCount.emit(this.cartItems.length);
-    
   }
 
   checkPresence(item: any): boolean {
@@ -57,6 +48,14 @@ export class OrderComponent implements OnInit {
     return false;
   }
   ngOnInit(): void {
+
+    this.orderServe.getOrderData().subscribe((data) => {
+      let objDump = data;
+      this.pizza = objDump.data;
+      let jsonData = { id: this.pizza.id, value: false };
+      this.initialItems.push(jsonData);
+    })
+
     this.cartItems = this.orderServe.getOrderCartItems();
     console.log("ngOnInit:OrderComponent, No. of Items: ", this.cartItems.length);
     this.countCartItems = this.cartItems.length;

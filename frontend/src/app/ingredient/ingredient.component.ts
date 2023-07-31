@@ -13,36 +13,29 @@ export class IngredientComponent implements OnInit {
   cost:number = 0;
   ingredient_data: any = [];
   buildIngredientId:any=[];
-  
+
   constructor(private ingredientService: IngredientService) {
-    this.ingredientService.getIngredientData().subscribe((data) => {
-      this.ingredient_data = data;
-    }, (err) => {
-      console.log('Error!!')
-      console.log(err);
-    }, () => {
-      console.log('Details Retrieved');
-    });
+
   }
 
   findCost(item:MatCheckboxChange){
     let item_id=item.source.id;
     let find_item = this.ingredient_data.find((product:any)=>product.id==item_id);
     if(item.checked){
-    
+
       console.log(find_item.price);
       this.cost += <number>find_item.price;
       this.buildIngredientId.push(find_item);
-    
+
     }else{
-      
+
       this.cost -= <number>find_item.price;
       //find item to remove using splice
       let index = this.buildIngredientId.findIndex((item:any)=>item.id==find_item.id);
       this.buildIngredientId.splice(index,1);
-      
+
     }
-    console.log(this.buildIngredientId);
+    console.log('buildIngredientId-',this.buildIngredientId);
   }
 
   checkPresence(item:any){
@@ -63,6 +56,18 @@ export class IngredientComponent implements OnInit {
     // console.log(item.value);
   }
   ngOnInit(): void {
+
+    this.ingredientService.getIngredientData().subscribe((data) => {
+      let objDump = data;
+      this.ingredient_data = objDump.data;
+      console.log('Details about data',this.ingredient_data);
+    }, (err) => {
+      console.log('Error!!')
+      console.log(err);
+    }, () => {
+      console.log('Details Retrieved');
+    });
+
     this.buildIngredientId = this.ingredientService.getCartIngredient();
 
     for(let i of this.buildIngredientId){
