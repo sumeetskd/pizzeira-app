@@ -1,0 +1,19 @@
+<nav class="navbar navbar-inverse" id="nav-class">
+    <div class="container-fluid" id="nav-container">
+      <div class="navbar-header ">
+        <a class="navbar-brand">Pizzeira</a>
+        <a routerLink="/home"><img id="logo" src="../assets/PizzeriaLogo.png" height="55px" width="60px" /></a>
+      </div>
+      <ul id="nav-order" class="nav navbar-nav">
+        <li><a routerLink="/order">Order Pizza</a></li>
+        <li><a routerLink="/buildpizza">Build Ur Pizza</a></li>
+      </ul>
+      <ul id="nav-cart" class="nav navbar-nav">
+        <a routerLink="/cart" class="btn btn-warning btn-md" >
+          <span class="glyphicon glyphicon-shopping-cart"><span *ngIf="getCount==true?true:false">{{count}}</span></span> Shopping Cart
+        </a>
+      </ul>
+    </div>
+  
+  </nav>
+  

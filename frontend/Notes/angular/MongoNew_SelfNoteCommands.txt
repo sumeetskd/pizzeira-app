@@ -1,0 +1,11 @@
+show databases;
+
+create new db: use <dbname>
+
+collection: equivalent to table
+
+show collections;-> shows collections
+
+create New Collection: 
+db.myNewCollection.insertOne({x:1});	(auto-creation:implicit: when first data is inserted)
+db.createCollection(name_of_collection);	(collection:explicit)

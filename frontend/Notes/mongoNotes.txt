@@ -1,0 +1,13 @@
+Connection node with Mongo:
+
+1. Create project using npx express-generator and switch to it.
+2. Install mongodb using npm:
+    npm install mongodb
+3. mongodb is driver as wll as API.
+4. In app.js file, create the MongoClient
+5. Create the database Url
+6. Connect to database using connect() method
+7. Start the mongo server.
+8. We need to specify the database name which we want to use 
+using connection.db() method.
+    eg. connection.db("MEAN10FEB");

@@ -1,0 +1,42 @@
+<div style="margin:30px 0px 0px 0px;">
+    <div>
+        <h4 style="text-align: center;">Pizzeria now gives you options to build your own pizza. Customize your pizza by
+            choosing ingredients from the
+            list given below</h4>
+    </div>
+    <div>
+        <div class="container">
+            <div style="display: flex;justify-content: center; padding: 15px;">
+                <form #userForm="ngForm" (ngSubmit)="onclickSubmit(userForm)" style="flex-basis:55%">
+    
+                    <table id="table-id" class="table table-hover table-bordered" style="width: 100%; text-align: center;">
+                        <tbody>
+                            <tr *ngFor="let i of ingredient_data" id="table-currency">
+                                <td class="table-data"><img [src]=i.image [alt]=i.tname height="50px" width="50px"></td>
+                                <td class="table-data">{{i.tname}} {{i.price|currency:'INR'}}</td>
+                                <td class="table-data">
+    
+                                    <input #data [value]="i.id" hidden>
+                                    <mat-checkbox [name]="i.tname" [id]="i.id" [value]="i.price" [checked]="checkPresence(data)" (change)="findCost($event)">
+                                        Add
+                                    </mat-checkbox>
+    
+    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="table-data"
+                                    style="text-align: left; color: rgba(66, 0, 128, 0.815); font-weight: bolder; font-size: medium;">
+                                    Total Cost: {{cost|currency:'INR'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div id="buttonDiv">
+                        <a routerLink="/cart" id="button" class="btn" role="button">Build Ur Pizza</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

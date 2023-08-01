@@ -1,0 +1,108 @@
+1. Every browser internally has a javascript engine,
+which executes the js code.
+2. All the scripting language code gets convrted into js(ECMA).
+3. ECMA(European Computer Manufacturer's Association) script is the 
+set of the standard to be followed by all the scripting alnguages.
+4. Typescript is developed by Microsoft.
+5. Typescript follows the features of both ES5 and ES6.
+6. TypeScript uses transpiler.
+
+7. Transpilation is the process of converting the typescript code to ECMA(JS)
+8. We save typescript file with .ts as extension.
+9. Transpilation process is as below:
+
+.ts file--> transpiler---> .jsfile ----> browser ---> executed
+
+10. Typescript is the super set of javascript.
+
+11. When we compile the .ts file equivalent .js file is generated.
+12. We include this .js file in our html file
+13. We cannot include .ts file in the html because, browser
+does not understand typescript code.
+14. Javascript doesnot support data type at the time of variable
+declaration.
+15. Type script support data types. eg?
+16. Type script is type safe language: ? -> protects our data from other datatype
+17. Angular is client side framework which is based on typescript.
+18. Framework provides the structure to develop the project.
+19. In javascript errors can be seen at the runtime.
+20. In typescript errors can be seen at the compile time.
+21. Javascript is interpreter based language.
+22. Type script is compiler based language.
+23. Javascript does not support abstract class/interfaces.
+24. Typescript supports abstract class and interfaces.
+25. Typescript is a typed language(type safe).
+26. We can check the data type of the variable using 
+typeof() function in typescript.
+27. compile using: tsc <file.ts>
+
+Number data type:
+let age: number = 20;       
+let binary:number = 0b1011100;   0b indicates the binary number
+let hexcode: number = 0x46ADC56;  0x indicate the hexadecimal number
+let octal: number = 0o77563; 0o indicate the octal number
+
+
+any:
+1. Some times the data is coming from remote location(server), and we want
+to recieve it. In this case we don't know the datatype.
+For such a situation typescript provides "any" data type.
+2. When we declare a variable with datat type as "any" it can hold data of any type.
+
+
+Array:
+1. Used to store multiple elements of same datatype
+
+Enum:
+It is used to assign the numeric constant
+2. It is used when we want to select the value
+from perticular set of value
+
+
+NOTE: Object: Realtime entities, based on object a class in created.
+Class:
+
+
+Object:
+Everything in this world which has properties and which perform some task.
+
+1. It has state and behaviour.
+2. Set of values of peoperties of an object is called as state.
+	eg. Student(rollNo,name,percent) --> set of properties
+		(101,Sachine, 69.36)----->state 
+		(102,Ajit,93.63)------>state
+3. This set of functions carried out by object is called as behaviour.
+
+
+Class:
+1. It is blueprint for object.
+2. Class is used to map the realtime object with the software domain.
+3. Using the class we can create the any number os identical objects.
+
+Constructor:
+1. It is a special member function of class, which get called automatically at the time 
+of object creation.
+2. It is used to initialize the properties of an object.
+3. It does not have a return type.
+
+Inheritance:
+1. When one object of a class acquires the properties and behaviour of another object of another class, it is called inheritance.
+2. The advantage of inheritance is code reusability.
+3. We use inheritance for code reusability and extensibility.
+4. A class which aquires the properties is called child class or derived class.
+5. A class from which other classes acquires properties and behaviour is called as base class or parent class.
+6. In typescript we use "extends" keyword to establish the parent child relatinship.
+
+Super:
+1. super() is used to ivote parent class Constructor
+2. using super we can call the parent class members(data,function)
+
+Overriding: 
+1. Redeclaring the parent class function in child class is called as function(method) Overriding.
+2. In overriding the signature of parent class function and child class function must be same.
+
+Module:
+1. When we want to create resuable code(class), 
+we have to make it as Module. : to use one class, inside an external class. We use Module.
+2. To create any class as module we have to export it.
+3. If we export a class, then only we can use it in other files.

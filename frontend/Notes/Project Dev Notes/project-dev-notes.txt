@@ -1,0 +1,79 @@
+Developing Complete MEAN App:
+1. Create the Angular
+2. Create the service with name as Books
+3. Create the Component as "AddBook"
+4. Import HttpClientModule in app.module.ts file
+5. Create the Model Book as interface in Books.Model.ts file in app folder.
+6. Inside the service file import HttpClient and create its instance as
+dependency injection.
+7. In the service class create the getAllBook() and addBook() methods.
+8. In the app.comp.ts file create constructor and create the object of
+BookService as dependency injection.
+
+
+
+
+
+Server side program:
+1. Create the Node server side project npx express-generator.
+2. Switch to that project folder and install mongodb.
+3. Create the mongo connection in books.js(Routing file).
+4. Create teh different methods as per requirments like get, post.
+eg. router.get() ,router.post
+5. From get() methods fetch all the books from mongo db and return as response.
+eg.
+router.get('/allbooks',(req,res)=>
+{
+db.collection('Books').find().toArray((err,data)=>
+{
+if(err)
+console.log("Can not find book data");
+else{
+res.send(data);
+}
+})
+})
+IMP:
+1. To execute the MEAN app we need to use "cors"
+2. Install cors.
+3. import cors in the app.js file(Server program) and use it as
+app.use(cors)
+6. Execute this node prgram and then execute the Angular program.
+
+
+
+
+
+Asynchronous programming:
+1. Whle working with the ynchrnonous programs, if one of the opeartion failed or
+took more time to execute remaining task also goes in pending state.
+2. To over come this issue we use asynchronous programming.
+3. Asynchronous functions contains the callback function as argument.
+
+
+
+Create the asynchronous function:
+1. To create the asynchronous function we pass a callback function as parameter.
+2.Then the result of our function we pass to the callback function as argument.
+
+
+Promise:
+1. Promise is used to assure the caller of function about the either result or
+the error.
+2. Promise object always return either success or reject state.
+3. When we write promise object in the asynchronous function, then it will
+either return success(data) or failure(error).
+4. When we use normal asynchronous function, we only receive success(data), but
+we can not get failure status(error).
+5. We call the promisified functions using then() and catch()
+
+BlueBird:
+1. It is fully featured javascript library for the Promise.
+2. When we promisify any API using the bluebird, it's performance becomes more
+than noraml ES6 Promise object.
+3. Installation:
+npm install bluebird
+4. We can promicify any ither node modules using bluebird in order to use that
+modules asynchronously.
+Example : We can promicify the mongoose connection.
+

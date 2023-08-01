@@ -1,0 +1,27 @@
+node -v: node version
+npm install -g @angular/cli: installs angular cli globally
+ng -version: angular/cli version
+port: 4200
+
+Some angular cli commands:
+1. ng new myapp:create new project
+2. ng update @angular/core @angular/cli:updates angular and its dependicies
+3. ng serve: serves the app on localhost:4200 
+4. ng --v,npm--v: shows verson
+5. ng add @angular/localize: addes ext libraries to ur project
+6. ng run <target>[option]: run an artifact target with some built in option
+
+7. xi18n: extract i18n messages from source code
+8. config: retrives or set angular config value
+9. deploy: invokes the deploy builder for specified project
+
+creation of:
+10. module: ng g module my-module
+11. ng g c component
+12. ng g service service_name
+13. ng generate directive directive_name
+	ng g d directive_name
+
+14. ng analytics : enables or disables all usage analytics for the user
+15. ng build <project>: name of the project can be anything
+16. ng doc pipe: opens the official angular documentation in a browser

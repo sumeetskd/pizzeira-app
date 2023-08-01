@@ -1,0 +1,27 @@
+css:
+1. It is used for the decoration of the page.
+2. There are 3 types of CSS:
+    1. Inline CSS: When we declare the css at the same place of html,
+                   it is called as an inline css.
+    2. Internal CSS: When we declare the css inside the <style> tag, under the <head> section
+    3. External CSS: When we create a separate .css file and
+                    include it in our page using the <link rel="stylesheet" href="location"> tag
+
+IMP: When the different style is provided to the same html element using:
+     inline css, internal css and external css, preference given to the inline css.
+
+3. There are different types of selector, out of which some commonly used are id, class and element selector.
+4. When we want to apply some style to the perticular html element we use element selector as 
+    h1{
+        color: red;
+    }
+    In this case all the h1 element in the page will appear in the red color.
+
+5. When we want to apply some style to the selected html elements we make use of id selector.
+    id selector is created using # - symbol
+
+6. When we want to apply same style to the same style to the multople html elemnt of the same type our different type we use class selector.
+    Class Selector is created using "." - symbol.
+7. The advantage of selector: we can reuse the stylesheet 
+8. We can apply multiple css class to single html elements, but the style written in the last class will be applied to the page.
+
