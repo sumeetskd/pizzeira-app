@@ -1,0 +1,29 @@
+<form #myForm="ngForm">
+  <div>
+    <label>Enter user name:</label>
+    <input type="text" id="uname" name="uname" #username="ngModel" ngModel minlength="3" required>  
+
+    <div *ngIf="username.invalid && (username.touched || username.dirty)" class="error">
+      <div *ngIf="username.error?required">
+        Username cannot be blank..
+      </div>
+      <div *ngIf="username.error?minlength">
+        Username must be at least 3 characters..
+      </div>
+    </div>
+
+    <label>Enter user name:</label>
+    <input type="password" id="password" name="password" #pass="ngModel" ngModel minlength="5" required>
+    <div *ngIf="pass.invalid && (pass.touched || pass.dirty)" class="error">
+      <div *ngIf="pass.error?.required">
+        Username cannot be blank..
+      </div>
+      <div *ngIf="pass.error?.minlength">
+        Password must be at least 5 characters..
+      </div>
+    </div>
+
+    <button [disabled]="myForm.invalid">Login</button>
+  </div>
+ 
+</form>

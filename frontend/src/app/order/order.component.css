@@ -1,0 +1,70 @@
+#pizza-block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    padding: 10px;
+
+}
+.pizza{
+    
+    /* flex-basis: 50%; */
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    height: 300px;
+    
+    /* width: 50%; */
+
+}
+.pizza:hover{
+    transition: 0.5s;
+    -webkit-box-shadow: 5px 17px 28px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 17px 28px 3px rgba(0,0,0,0.75);
+    box-shadow: 5px 17px 28px 3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -7px 17px 28px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: -7px 17px 28px 3px rgba(0,0,0,0.75);
+    box-shadow: -7px 17px 28px 3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 27px 28px 3px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 27px 28px 3px rgba(0,0,0,0.57);
+    box-shadow: 0px 27px 28px 3px rgba(0,0,0,0.57);
+}
+#red{
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    text-align: center;
+    /* padding: 10px; */
+    margin:0px;
+}
+#green{
+    width: 20px;
+    height: 20px;
+    background-color: green;
+}
+.p1{
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 18px;
+}
+.p2{
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* padding: 15px; */
+}
+.p3{
+    flex-basis: 20%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+
+}

@@ -1,0 +1,8 @@
+1. Two Modules:
+        1. Employee Details
+        2. Book Details
+
+2. Two Modules should be linked to a main component and a routing file
+3. Book Details have a service(httpclient) and Components to display:
+        1. Show Details 
+        2. Add Details of new book

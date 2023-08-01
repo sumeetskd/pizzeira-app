@@ -1,0 +1,120 @@
+MongoDB
+
+SQL---------- Mongo
+database --- database
+table --- collection
+row --- document
+
+
+Creating the database in mongo.
+1. "use" is the command to create and use the the database.
+2. If the database with the name given is available then it be switched to or
+new database will be created witrh the name given and switched to.
+3. To check the current database we use "db" command.
+4. To see all the databases available we use "show databases".
+5. To see all the collection in current database we use "show collections"
+
+
+Create the collection
+1. To create the colection we use
+db.createCollection("<Name_Of _Collection>");
+2. We can also create the collection using below
+db.<collection_name>.insertOne({empNo:101,name:"Ram",age:21})
+Above command will insert the record if the collection with
+name given is available, if it is not available then it will create the
+collection with the name given and then it will insert the record.
+
+
+Insert the records:
+1. In mondo db we can insert single record at a time or we can insert multiple
+records also(document).
+2. To insert the single record we use db.<Collection_Name>.insertOne({});
+eg. db.Users.insertOne({name:"Rahul",age:21,city:Pune});
+3. to insert multiple records we user db.<collection_name>.insertMany([{},{}]);
+
+
+Fetch the documents:
+1. We use find() method.
+2. To view output in proper styling we use find().pretty().
+3. eg. db.Users.find() or db.Users.find().pretty().4. To check the count we use count() method
+eg. db.Users.find().count()
+5. To fetch the documents using some condition we specify that
+conditions in the find() method
+eg. db.Users.find({name:"Raja"}); =>this will display the records with
+name as "Raja".
+
+
+sort():
+eg. db.Users.find().sort({age:1}).pretty();
+here we wan give values as 
+ 1: ascending order
+-1: descending order.
+
+Updating the documents:
+1. We can update single or multiple documents using the below function:
+	1. updateOne();
+	2. updateMany();
+	eg: db.Users.updateOne({name:"Sachin"},{$set:{city:"Nagpur"}});
+
+
+To fetch only perticular field from all the documents:
+1. find() method always returns _id
+eg. db.Users.find({<condition>},{name:1})
+eg. db.Users.find({<condition>},{_id:0,name:1,city:1})
+This will skip all the fields and only display name and city fields
+for all the documents
+ star 1
+
+
+Deleting the documents:
+1. To delete the documents we have below methods:
+1. deleteOne({condition})
+2. deleteMany({condition})
+
+
+
+
+$set:
+1. This operator replaces the existing value with the new value for perticular fileds, if 
+that field is present in the document.
+2. If the field is not present in the document then it creates the field
+and then assign the value.
+3. Using the $set operator we can set the value for the embedded document also.
+	$set:{name:'sumeet'}
+	updateOne({name:"Sachin"},{$set:{city:"Nagpur"}})
+
+
+Create the database in Mongo:
+
+1. "use" is the command used to create or switch to perticular database.
+2. To check the current database, we use "db" command.
+
+show databases: shows list of databases;
+
+db book: creates new database;
+
+use book : enters/uses databases
+___________________________________
+
+collection= same as table -> have key,value pair(like a json object)
+To create collection:-
+db.createCollection("Book");
+
+show collections : shows list of collection
+
+db.book.insertOne({title:"C",page:124,author:"Sumeet"} : inserts data
+
+
+db.book.pretty() : show the database in proper format
+db.book.find()
+
+db.book.find({title:"html"})	: fetched data from title:"html"
+
+db.book.find({title:"html"}).pretty() :  shows data in proper structure
+
+db.book.find().count() : shows no. of records
+
+db.book.find().sort({age:1}); -> returns data in ascending order
+db.book.find().sort({age:-1}); -> returns data in descending order
+any other values rather than 1 and -1 will give : error
+

@@ -1,0 +1,210 @@
+Node:
+1. Node is a server side (js)-javascript library. [imp]
+	-> It has non-blocking async features.
+2. Module is the predefined code(libraries) which helps us for
+code reusability.
+3. Module is used to wrap the code as single unit.
+4. There are 3 types of module:
+	1. Local Module: Local Module are developed by the developers.
+	2. Inbuilt Modules: These are the node js core modules.
+	3. Third party modules: These are the external modules which we import use in our program.
+5. If we want to use any module in our code we need to import it in our code using "require" keyword.
+
+Reading File/Writting to file:
+
+1. To perform the file operations node has provide "fs" module
+
+Callback Function: Function passed as a parameter to function is called Callback
+
+Error First Callback Function: It is a function which has 2 function as a
+parameter, first parameter always points to error and second function points to data.
+Hence it is called as error first callback function.
+
+eg:
+fs.readFile('./data.json','utf-8', function(err,data){
+	//error first callback function
+    	// err(1st param)->hold the error if any 
+    	// data(2nd param)-> hold the data from file
+    if(err){
+        //error block
+        console.log("Error has occured: "+err);
+    }else{
+        mydata = JSON.parse(data);
+        // will parse the json data into object
+        console.log(mydata.name);
+
+        // console.log(mydata);
+    }
+});
+
+Creating the server in the Node:
+1. We need to import the http module.
+2. createServer() function is used to listen and process the client 
+	request as well as to generate the response.
+3. createServer() function takes callback function as parameter.
+4. The callback passed to createServer() has 2 parameter as request and response object.
+	Using request object we can fetch data from the client.
+	Using response object we can send data to the client.
+
+	res.end()-> to close the response and then response is divered to client
+5. We start the server using listen() function.
+6. In this listen(), we specify the port number on which we want.
+to run the server and the message which is to be displayed on the browser console.
+	->it uses its 2nd parameter as callback function to print the logs on control.
+	server.listen(4500,()=>console.log("Server started at port no 4500"));
+
+
+Express:
+
+1. It is web framework for the node.
+2. It provides powerful route handling 
+3. It provides support for http methods(api) like: get, post, put, delete
+4. Installation:
+    npm install -g Express
+5. In express we use send() method to send the response to the client.
+6. We don't need to close the response while working with express.
+7. To start the server we use listen() method.
+
+Express Generator: 
+1. It is used to create the ready project structure for the node/express project.
+
+Steps:
+1. Create a project folder and switch to that folder.
+2. In this folder execute below command.
+	npx express-generator
+	npm install
+3. This will create a project.
+4. To execute this project we use 
+	nodemon start
+	(if not installed: npm install -g nodemon)
+5. The express generator project run on port no.: 3000
+6. This project structure contains different folders like routes.
+7. In this routes folder we create routing files.
+8. In the routing file we import express and using the express we get router object as:
+	var router = express.Router();
+9. Using the router object we call different http methods like get(), post()
+	router.get('/', (req,res)=>{})
+	The first arameter to all the http methods is url and second is callback function
+	with request and response as parameter.
+
+10. When we create the routing we need to export the router object as module.export = router;
+11. Then we need to register the router file with the server in app.js file.
+12. Import the router file in app.js file and attach it to the app with some url as
+	app.use('/employee',EmployeeRouter)
+	Here EmployeeRouter is variable holding the reference to EmployeeRouting.js File.
+13. Run the project on localhost:3000 with different urls.
+
+
+Example 2:
+Step: Create project with npx generator
+
+1. Create the book.json file in router folder.
+2. Create the bookRouter.js file.
+3. In this booksRouter.js file import books.js file
+4. Import the bookRouter file in app.js file and bind it using use() function.
+5. In the bookRouter file create different http methods with different urls.
+
+Reading Router Parameter:
+1. Client can send the parameters to server along with request.
+2. At the server side we can read these parameters using params property of request object
+	eg: request.params.bookid
+3. To create the get() method to fetch a book with perticular title will be as:
+eg: router.get('/title/:booktitle');
+4. We can access this title as:
+	request.params.booktitle
+5. To find the book with the given title in json file we use find() function.
+
+
+Reading Query String:
+
+1. Client can send the data using query string along with request.
+2. We can access this query string data using query property of request object.
+	eg:
+	localhost:3000/books/authorname=Sumeet 
+	
+	We can access this query string as:
+	req.query.authorname;
+
+Query strings:
+1. User can send the query string with the request.
+2. We can acces these query string in the route using query property of the
+request object.
+3. eg. localhost:3000/books/author?authorname=Pritam
+var author=req.query.authorname
+
+
+
+POST method:
+1. To add the book to exsisting book list use post method.
+2. when we use post method data is sent to server inside the request body.
+3. at the server side ,we can access this data using body property of request object.
+eg. req.body
+4. In post man, select the POST method from the dropdown then click on body option.
+5. The click on raw menu and select JSON from the dropdown. Inside this area paste or write
+the data in key value pair(json format) which we want to send to server using POST method.
+
+->POST->Body->Raw->json
+
+DELETE method:
+1. To delete some content from server we usr delete method;
+2. Steps for POSTMAN are same as of POST method.
+3. when we use delete method data is sent to server inside the request body.
+4. at the server side ,we can access this data using body property of request object.
+eg. req.body
+
+___________________________________________________________________________
+
+MiddleWare:
+1. It is like filter.
+2. It catches the request going to server and all responses going to client.
+3. When we want to implement pre request processing or post response generation logic
+we make use of middleware.
+4. We create any number of middleware in application.
+5. To attach the middleware with the application we make use of use() method.
+	eg: 	app.use(middleware1)
+		app.use(middleware2)
+
+	eg: 
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+6. We need to call next() method in the middleware. This method will call next middleware if any or it will send request application.
+7. Whatever logic write before next() gets executed before request processes.
+and the logic written after next() method gets executed after response generation.
+8. We create the middleware in the app.js file
+	eg: let middle1 = {
+		console.log("Middleware 1 invoked...");	//pre request processing logic
+		next();	// call the next middleware if any else send request to app.
+		console.log("Thank you for using our app"); // post response generation logic
+
+	}
+	app.use(middle1); //attaching the middleware with our application.
+
+9. If we add multiple middleware then they will be executed in the same sequence in which they are registered
+using use() method.
+______________________________________________________________________
+______________________________________________________________________
+
+Serving static resources:
+
+1. If we want to send some static resources like images, files, html we make use of 
+express.static middleware.
+2. express.static is predefined middleware in express framework.
+3. We need to bind the middleware in app.js file and pass the directory(folder) name from 
+which we want to send static files to client.
+	eg. app.use(express.static('public'));
+4. The name of folder will not be part of url in this case.
+	eg: localhost: 3000/ mango.jpg
+		localhost:3000/result.pdf
+		localhost:3000/index.html
+Virtual path prefix:
+1. If we want to make the folder name as part of url we need to use 
+virtual path prefix.
+	eg: 		app.use('public',express.static('/public'));
+2. The resources will be accessed as:
+	localhost:3000/public/index.html
+	localhost:3000/public/result.pdf
+

@@ -1,0 +1,173 @@
+<div id="cart-zero-row" *ngIf="getBooleanCount()">
+    <div class="container" id="cartZero">
+        <h2>Your Cart is Empty</h2>
+        <a routerLink="/home">
+            <p>Continue Shopping
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+            </p>
+
+        </a>
+    </div>
+</div>
+
+<div id="cart-row" *ngIf="!getBooleanCount()">
+    <div class="container">
+        <div id="container-cart">
+
+            <div id="order-cart">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td colspan="6">
+                                <h2>My Cart</h2>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of countOrderItems" style="text-align: center; vertical-align: middle;">
+                            <td class="table-data">
+                                <!-- image -->
+                                <img [src]="c.item.image" [alt]="c.item.name" width="50px" height="50px">
+                            </td>
+                            <td class="table-data">
+                                <!-- Veg/Non-veg,use ngIf to display veg/nonveg icon                             -->
+                                <span *ngIf="c.item.type=='veg'?true:false"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Indian-vegetarian-mark.svg/2048px-Indian-vegetarian-mark.svg.png"
+                                        width="25px" height="25px" [alt]="c.item.type"></span>
+                                <span *ngIf="c.item.type=='nonveg'?true:false"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Non_veg_symbol.svg/1200px-Non_veg_symbol.svg.png"
+                                        width="28px" height="28px" [alt]="c.item.type"></span>
+
+                            </td>
+                            <td class="table-data">
+                                <h3>
+                                    <!-- Name -->
+                                    {{c.item.name}}
+                                </h3>
+                                <p>
+                                    <!-- Price -->
+                                    {{c.item.price|currency:'INR'}}
+                                </p>
+                            </td>
+                            <td class="table-data">
+                                <!-- quantity -->
+
+                                <!-- <input #itemId [value]="c.item.id" hidden> -->
+                                <button id="btn-minus" class="btn btn-xs" (click)="valueMinus(itemId)">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                </button>
+                                <input [id]="c.item.id" #itemId type="text" size="3"
+                                    style="height:25px;text-align:center" [value]="c.quantity" disabled>
+                                <button id="btn-add" class="btn btn-xs" (click)="valueAdd(itemId)">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </td>
+                            <td class="table-data">
+                                <!-- calculated Price -->
+                                {{c.totalPrice|currency:'INR'}}
+                            </td>
+                            <td class="table-data">
+                                <!-- remove icon, this will reflect on cart,order service -->
+                                <input [value]="c.item.id" #delItem hidden>
+                                <button id="btn-del" class="btn btn-sm" (click)="deleteOrder(delItem)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td colspan="1" style="text-align: center;">Subtotal:</td>
+
+                            <td colspan="1" style="text-align: center;">
+                                {{totalCost|currency:'INR'}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="ingredient-cart">
+                <div class="ingredient-items">
+                    <div class="head">
+                        <h2>Total Amount to be Paid:</h2>
+                    </div>
+                    <hr>
+                    <div>
+                        <div class="pizza-details">
+                            <div>Pizza </div>
+
+                            <div>{{totalCost|currency:'INR'}}</div>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="ingredient-head">
+                                <h3>Ingredient </h3>
+                                <div id="price">{{totalIngredientCost|currency:'INR'}}</div>
+                            </div>
+                            <div>
+                                <table id="ing-table" class="table table-borderless">
+                                    <tbody>
+                                        <tr id="ingredient-item" *ngFor="let i of ingredientCartItem">
+                                            <td style="text-align: left;">{{i.tname}}</td>
+                                            <td style="text-align: left;">{{i.price|currency:'INR'}}</td>
+
+                                            <td style="text-align: right;">
+                                                <input #ingredientId [value]="i.id" hidden>
+                                                <button style="border:0px;" type="button"
+                                                    (click)="deleteIngredient(ingredientId)"
+                                                    class="btn btn-default btn-xs">
+                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="total">
+                        <h3><b>Total:</b> {{totalCartPrice|currency:'INR'}}</h3>
+
+                        <a routerLink="/order-placed" id="" class="btn btn-warning" role="button">Pay Now</a>
+                        <button class="btn btn-warning" (click)="changeBoolean()" style="margin-left:30px ;">Clear
+                            Cart</button>
+                        <hr>
+                        <h4>
+                            <span style="color:red">*</span>Estimated time of delivery {{countItems*timeDelivery}} mins.
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="delivery-address" style="display: none; justify-content: flex-start;padding: 30px;">
+        <div>
+
+
+            <form>
+                <!-- Name input -->
+                <div class="form-outline mb-5">
+                    <input type="text" id="form4Example1" class="form-control" placeholder="Enter your Name" />
+                    <!-- <label class="form-label" for="form4Example1">Name</label> -->
+                </div>
+
+                <div class="form-outline mb-5">
+                    <textarea class="form-control" id="form4Example3" rows="4"
+                        placeholder="Enter your Address"></textarea>
+                    <!-- <label class="form-label" for="form4Example3">Message</label> -->
+                </div>
+
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-3">
+                    Save
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>

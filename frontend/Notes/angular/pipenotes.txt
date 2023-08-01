@@ -1,0 +1,80 @@
+What is Pipe?
+
+Pipes are simple functions to use in template expressions
+to accept an input value and return a transformed value.
+
+Use pipes to transform strings, currency amounts, dates, and other data for display.
+
+For example, you would use a pipe to show a date as April 15, 1988 rather than the raw string format. 
+
+
+built-in pipes for data formatting:
+
+DatePipe: Formats a date value according to locale rules.
+UpperCasePipe: Transforms text to all upper case.
+LowerCasePipe: Transforms text to all lower case.
+CurrencyPipe: Transforms a number to a currency string, formatted according to locale rules.
+DecimalPipe: Transforms a number into a string with a decimal point, formatted according to locale rules.
+PercentPipe: Transforms a number to a percentage string, formatted according to locale rules.
+
+
+
+Using a pipe in a template
+To apply a pipe, use the pipe operator (|) within a template expression as shown in the following code example,
+along with the name of the pipe, which is date for the built-in DatePipe. The tabs in the example show the following:
+
+-> app.component.html uses date in a separate template to display a birthday.
+-> hero-birthday1.component.ts uses the same pipe as part of an in-line template in a component that also sets the birthday value.
+
+eg: 
+
+
+1. DatePipe
+app.component.html
+<p>The hero's birthday is {{ birthday | date }}</p>
+
+HeroBirthdayComponet.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-hero-birthday',
+  template: "<p>The hero's birthday is {{ birthday | date:'MM/dd/YY' }}</p>"
+})
+export class HeroBirthdayComponent {
+  birthday = new Date(1988, 3, 15); // April 15, 1988 -- since month parameter is zero-based
+}
+
+2. Date+UpperCase and Date+Lowercase
+
+app.component.html
+<p>The hero's birthday is {{ birthday | date | uppercase}}</p>
+<p>The hero's birthday is {{ birthday | date | lowercase}}</p>
+
+HeroBirthdayComponet.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-hero-birthday',
+  template: "<p>The hero's birthday is {{ birthday | date:'MM/dd/YY' }}</p>"
+})
+export class HeroBirthdayComponent {
+  birthday = new Date(1988, 3, 15); // April 15, 1988 -- since month parameter is zero-based
+}
+
+
+3. Currency Pipe:-
+ use the CurrencyPipe with a country code such as EUR as a parameter. 
+ The template expression {{ amount | currency:'EUR' }} transforms the amount to currency in euros.
+ Follow the pipe name (currency) with a colon (:) and the parameter value ('EUR').
+eg: 
+
+template:-
+<p>The hero's birthday is {{ amount | currency:'EUR':'Euros '}} </p>
+
+class:-
+amount:number=123;
+
+
+4. Slice:
+For example, 
+{{ slice:1:5 }} creates a new array or string containing a subset of the elements starting with element 1 and ending with element 5.

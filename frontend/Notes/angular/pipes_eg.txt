@@ -1,0 +1,54 @@
+app.component.ts:-
+  
+	title = 'my-first-app';  
+  
+   
+  
+
+1) 
+ <b>{{title | uppercase}}</b><br/>  
+o/p: MY-FIRST-APP
+
+2) 
+ <b>{{title | lowercase}}</b><br/>  
+o/p: my-first-app
+
+3)
+ <b>{{6589.23 | currency:"USD"}}</b>
+o/p: $6589.23
+
+4)
+todaydate = new Date();  
+
+<b>{{todaydate | date:'d/M/y'}}</b><br/>  
+<b>{{todaydate | date:'shortTime'}}</b>  
+
+O/P: 06/10/2022
+		1:11 PM
+
+5)JSON PIPE: Converts an object into a json object
+jsonval = {name: 'Alex', age: '25', address:{a1: 'Paris', a2: 'France'}};
+
+<b>{{ jsonval | json }}</b>  
+O/P: 
+	{"name":"Alex","age":"25",
+		"address":{
+			"a1": "Paris",
+			"a2": "France"
+		}
+	}
+
+6)	Percentage Pipe:
+
+<b>{{00.54565 | percent}}</b>  
+O/P: 55%
+
+7) Slice Pipe:
+months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'Jun',  
+    'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+<b>{{months | slice:2:6}}</b>  
+
+O/p: Mar, April, May, Jun
+
+Same as slice operation in javascript	[n1,n2)-> end index value is not included
