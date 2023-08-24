@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { IngredientComponent } from './ingredient/ingredient.component';
-import { OrderPlacedComponent } from './order-placed/order-placed.component';
-import { OrderComponent } from './order/order.component';
+import { HomeComponent } from './features/home/home.component';
+import { IngredientComponent } from './features/ingredient/ingredient.component';
+import { OrderPlacedComponent } from './features/order-placed/order-placed.component';
+import { OrderComponent } from './features/order/order.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [

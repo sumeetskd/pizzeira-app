@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { CartService } from '../cart.service';
+import { CartService } from '../shared/services/cart.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class ShoppingCartComponent implements OnInit {
   countItems: number = 0;
   totalIngredientCost:number = 0;
   totalCartPrice:number = 0;
-  
+
   checkCount: boolean = this.countItems == 0 ? true : false;
   orderCartItem: any = [];
   ingredientCartItem: any = [];
@@ -111,7 +111,7 @@ export class ShoppingCartComponent implements OnInit {
     let delItemId = item.value;
     let findIndexCart = this.countOrderItems.findIndex((data: any) => data.item.id == delItemId);
     let findIndexOrder = this.orderCartItem.findIndex((data: any) => data.id == delItemId);
-    
+
     console.log(findIndexCart);
     this.countOrderItems.splice(findIndexCart,1);
     this.orderCartItem.splice(findIndexOrder,1);
@@ -142,7 +142,7 @@ export class ShoppingCartComponent implements OnInit {
     let delItemId = item.value;
     let findIndexIngredient = this.ingredientCartItem.findIndex((data: any) => data.id == delItemId);
     // let findIndexOrder = this.orderCartItem.findIndex((data: any) => data.id == delItemId);
-    
+
     console.log(findIndexIngredient);
     this.ingredientCartItem.splice(findIndexIngredient,1);
     // this.orderCartItem.splice(findIndexOrder,1);
@@ -180,12 +180,12 @@ export class ShoppingCartComponent implements OnInit {
       }
       let k = { item, 'quantity': quantity, 'totalPrice': totalPrice };
       this.countOrderItems.push(k);
-      
+
 
       // this.totalCartPrice = this.totalCost+this.totalCartPrice;
     }
 
-    // this.countOrderItems = 
+    // this.countOrderItems =
     console.log('shopping-cart.component:countOrderItems:', this.countOrderItems)
     console.log('Number of CartItems: ', this.countItems);
     console.log(this.countOrderItems);

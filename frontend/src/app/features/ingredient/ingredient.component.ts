@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { IngredientService } from '../ingredient.service';
+import { IngredientService } from '../../shared/services/ingredient.service';
 
 @Component({
   selector: 'app-ingredient',
