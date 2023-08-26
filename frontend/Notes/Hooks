@@ -1,0 +1,34 @@
+constructor: will be called first then the component is loaded
+
+ngInit: will be called after the constructor
+-> only be called once after the componenet is loaded to the browser
+
+onChange: will be called everytime their is any change made to the @Input property
+
+
+ngAfterContentInit -> it will execute when a component is loaded inside the
+<ng-content> element
+it will only be called once in the lifecycle
+
+ngAfterContentChecked-> behaves in the similar way as ngDoCheck, ie. it will be called whenever 
+there is any change within the component
+-> difference b/w DoCheck and afterContentChecked  => application for both of these functions are different, do check is called to track the changes inside the component -> property, etc
+aftercontentchecked is called to track the changes inside the ng-content
+
+
+View => HTML file
+ngAfterViewInit-> this method will be called after the html for the componenet is rendered 
+-> will be executed once, after the view initialization or view is rendered 
+
+
+ngAfterViewChecked => this method will be called if there is any change within the html page of the component
+-> this will be called in case of any change within the view
+
+ngOnDestroy:
+will be called everytime the component is deleted/removed
+to be used if you want to free the memory occupied by the component before deleting it from the browser
+-> works in the similar was as constructor and destructor 
+
+NOTE:
+doCheck, afterContentCheck, AfterViewChecked will be called everytime 
+there is any change within the component, can be property change or value change etc
