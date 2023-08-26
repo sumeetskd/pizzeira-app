@@ -8,14 +8,16 @@ import { OrderComponent } from './features/order/order.component';
 import { IngredientComponent } from './features/ingredient/ingredient.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from './features/navigation/navigation.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { OrderPlacedComponent } from './features/order-placed/order-placed.component';
+import { LoginComponent } from './features/login/login.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { OrderPlacedComponent } from './features/order-placed/order-placed.compo
     NavigationComponent,
     FooterComponent,
     OrderPlacedComponent,
-
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +37,10 @@ import { OrderPlacedComponent } from './features/order-placed/order-placed.compo
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

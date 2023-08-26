@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CartService } from './shared/services/cart.service';
-import { ORDER_URL } from './shared/constants/url';
+import { CartService } from './cart.service';
+import { ORDER_URL } from '../constants/url';
 import { Observable } from 'rxjs';
 
 @Injectable({
